@@ -1,22 +1,21 @@
-name: CI/CD
+name: CI
 
 on:
   push:
     branches:
       - main
+      - dev*
+  pull_request:
+    branches:
+      - main
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+      - name: Set up Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: "1.20"
 
-      - name: Build and Test
-        run: |
-          # test  application here
-
-      - name: Build and Push Docker Image
-        run: |
-          # Add commands to build and push your Docker image here
