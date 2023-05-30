@@ -15,8 +15,10 @@ jobs:
 
       - name: Build and Test
         run: |
-          # test  application here
+        #running test
+          
 
       - name: Build and Push Docker Image
         run: |
-          # Add commands to build and push your Docker image here
+        #push my image 
+  
