@@ -1,3 +1,5 @@
+name: CD
+
 on:
   pull_request:
     types:
@@ -32,3 +34,4 @@ jobs:
           context: .
           push: true
           tags: ghcr.io/${{ github.repository }}:${{ github.sha }}
+
