@@ -1,20 +1,23 @@
-name: Create and publish a Docker image
+name: CI/CD
 
 on:
   push:
     branches:
+      - main
       - add-ci-cd
+  pull_request:
+    types:
+      - closed
+    branches:
+      - main
 
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
 
 jobs:
-  build-and-push-image:
+  build-and-publish:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
 
     steps:
       - name: Checkout repository
@@ -40,3 +43,4 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+
